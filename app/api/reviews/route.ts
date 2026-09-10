@@ -136,25 +136,24 @@ export async function POST(request: NextRequest) {
     photoUrls.push(pub.publicUrl);
   }
 
-  // Insert (approved = false -> manual moderation)
-  const { data: inserted, error: insErr } = await supabase
-    .from('reviews')
-    .insert({
-      business_id: business.id,
-      customer_name: customerName,
-      rating: ratingRaw,
-      comment,
-      product_model: productModel || null,
-      verified_purchase: false,
-      photo_urls: photoUrls,
-      approved: false,
-    })
-    .select('id')
-    .single<{ id: string }>();
+  // Insert (approved = false -> manual moderation).
+  // No .select() here on purpose: the anon SELECT policy only exposes approved
+  // rows, so an INSERT ... RETURNING would trip "new row violates row-level
+  // security policy". We don't need the row back — a success flag is enough.
+  const { error: insErr } = await supabase.from('reviews').insert({
+    business_id: business.id,
+    customer_name: customerName,
+    rating: ratingRaw,
+    comment,
+    product_model: productModel || null,
+    verified_purchase: false,
+    photo_urls: photoUrls,
+    approved: false,
+  });
 
   if (insErr) {
     return json({ success: false, error: `No se pudo guardar la reseña: ${insErr.message}` }, 500);
   }
 
-  return json({ success: true, data: { id: inserted.id } }, 201);
+  return json({ success: true }, 201);
 }
