@@ -1,0 +1,64 @@
+/* AppleMart reseñas — base styles.
+   Design is deliberately light / Apple-like (see design handoff). No dark mode. */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light;
+
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "SF Pro Text", "Helvetica Neue", Helvetica, sans-serif;
+
+  --color-page-bg: #f5f5f7;
+  --color-surface-bg: #ffffff;
+  --color-logo-bg: #fffdf2;
+  --color-avatar-bg: #f0f0f3;
+  --color-chip-neutral: #f5f5f7;
+  --color-chip-accent: #fbf1ec;
+  --color-divisor: #f0f0f3;
+
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-tertiary: #515154;
+  --color-star-empty: #d2d2d7;
+  --color-text-accent-dark: #a05233;
+
+  --color-accent: #db6a46;
+  --color-cta: #1d1d1f;
+  --color-cta-hover: #000000;
+
+  --color-border: #eaeaee;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-page-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
