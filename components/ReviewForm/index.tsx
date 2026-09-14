@@ -144,7 +144,7 @@ export default function ReviewForm() {
         </div>
         <h2 style={{ fontSize: 19, fontWeight: 400 }}>{COPY.successMessage}</h2>
         <p style={{ fontSize: 14, color: 'var(--color-text-secondary)', maxWidth: 360, textWrap: 'pretty' }}>
-          Revisamos cada reseña antes de publicarla. ¡Gracias por tu tiempo!
+          Ya está publicada. ¡Gracias por tu tiempo!
         </p>
         <Link
           href={`/${BUSINESS_INFO.slug}`}

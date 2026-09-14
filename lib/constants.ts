@@ -140,7 +140,7 @@ export const COPY = {
   submitHeading: '¿Ya compraste tu iPhone?',
   submitSubheading: 'Contanos cómo fue tu experiencia. Toma menos de un minuto y ayuda a los próximos compradores.',
   submitCta: 'Dejá tu reseña',
-  successMessage: '¡Gracias por tu reseña! La vamos a publicar en breve',
+  successMessage: '¡Gracias por tu reseña!',
   reviewsHeading: 'Reseñas',
   reviewsSort: 'Más recientes',
   verifiedPurchase: 'Compra verificada',
