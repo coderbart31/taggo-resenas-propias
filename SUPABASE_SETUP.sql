@@ -22,7 +22,7 @@ create table if not exists reviews (
   product_model text,
   verified_purchase boolean default false,
   photo_urls text[] default '{}',
-  approved boolean default false,
+  approved boolean default true, -- auto-publish: no manual moderation
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );

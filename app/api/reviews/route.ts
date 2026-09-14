@@ -136,10 +136,9 @@ export async function POST(request: NextRequest) {
     photoUrls.push(pub.publicUrl);
   }
 
-  // Insert (approved = false -> manual moderation).
-  // No .select() here on purpose: the anon SELECT policy only exposes approved
-  // rows, so an INSERT ... RETURNING would trip "new row violates row-level
-  // security policy". We don't need the row back — a success flag is enough.
+  // Insert (approved = true -> published immediately, no manual moderation).
+  // No .select() here on purpose: keeps working the same way regardless of
+  // the SELECT policy, and we don't need the row back — a success flag is enough.
   const { error: insErr } = await supabase.from('reviews').insert({
     business_id: business.id,
     customer_name: customerName,
@@ -148,7 +147,7 @@ export async function POST(request: NextRequest) {
     product_model: productModel || null,
     verified_purchase: false,
     photo_urls: photoUrls,
-    approved: false,
+    approved: true,
   });
 
   if (insErr) {
